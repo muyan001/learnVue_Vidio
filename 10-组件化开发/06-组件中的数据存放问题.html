@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <first></first>
+</div>
+<script src="../vue.js"></script>
+
+<template id="tmp">
+    <div>
+        <p>标题是：{{title}}</p>
+    </div>
+</template>
+
+
+<script>
+
+    // 创建全局组件
+    Vue.component('first',{
+        template:'#tmp',
+
+        // 数据存放的写法必须是一个函数
+        data(){
+            return {
+                title:'title'
+            }
+        }
+    })
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        }
+    })
+</script>
+</body>
+</html>

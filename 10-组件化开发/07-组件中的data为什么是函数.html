@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+<!--    当使用三个组件的时候，三个组件的结果互不影响，说明各自组件的data数据是独立的-->
+    <test></test>
+    <test></test>
+    <test></test>
+</div>
+<script src="../vue.js"></script>
+<template id="computer">
+    <div>
+        <p>计算结果：{{count}}</p>
+        <button @click="add">+</button>
+        <button @click="sub">-</button>
+    </div>
+
+</template>
+<script>
+
+    // 全局组件
+    Vue.component('test',{
+        template:'#computer',
+        // 假如使用 vue实例的data写法，那么data的数据永远是一份(同一个对象)   data:{count:0}
+        //
+        // 因此需要data是一个函数，生成组件的时候都要调用data函数，而data函数中，需要生成一个对象，
+        // 也就是每次调用都可以生成一个新的对象，从而保证每个组件完全独立
+        data(){
+            return {
+                count:0
+            }
+        },
+        methods:{
+            add(){
+                 this.count++
+            },
+            sub(){
+                 this.count--
+            }
+        }
+
+    })
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        }
+    })
+</script>
+</body>
+</html>

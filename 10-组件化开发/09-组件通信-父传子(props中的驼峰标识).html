@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    props中使用的是驼峰，但是这里必须是这样写（-分隔），否则无法传递数据   -->
+    <cpn :one-person="person" :some-hello="message"></cpn>
+</div>
+
+
+<template id="tmp">
+    <div>
+        <p>个人信息：{{onePerson}}</p>
+        <p>打招呼：{{someHello}}</p>
+    </div>
+</template>
+<script src="../vue.js"></script>
+<script>
+    const cpn = {
+        template:'#tmp',
+        props:{
+            onePerson:{
+                type:Object,
+                // 对象和数组的默认值写法必须是这样的,返回这样的空数组或者空对象
+                default:function (){
+                    return {}
+                },
+                required:false
+            },
+            someHello:{
+                type:String,
+                default:'',
+                required: true
+            }
+        }
+    }
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            person:{
+                name:'张三',
+                age:18,
+                addr:'重庆西永'
+            }
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

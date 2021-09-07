@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+<!--    // 3.使用 组件（必须在Vue实例范围内）-->
+    <my-cpnc></my-cpnc>
+    <my-cpnc></my-cpnc>
+    <my-cpnc></my-cpnc>
+
+</div>
+<script src="../vue.js"></script>
+<script>
+
+    // 1. 创建组件构造器对象
+    const cpnC = Vue.extend({
+        template:`
+            <div>
+                <h2>标题</h2>
+                <p>内容11111111111111</p>
+                <p>内容22222222222222</p>
+            </div>
+            `
+    });
+
+    //2. 注册组件(组件名称不支持大写)  Vue.component('取的组件名称','组件对象')
+    Vue.component('my-cpnc',cpnC);
+
+
+
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        }
+    })
+</script>
+</body>
+</html>

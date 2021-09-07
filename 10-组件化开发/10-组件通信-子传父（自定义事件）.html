@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    自定义事件或者属性都是在子组件中创建的，，，自定义事件或者属性的值都是给父组件或者从父组件来的-->
+
+
+<!--    传递一个值时的写法-->
+    //写法1
+<!--    <cpn @newevent="getcontent($event)"></cpn>-->
+    // 写法2
+    <cpn @newevent="getcontent"></cpn>
+
+
+<!--    传递两个值时的写法-->
+<!--    <cpn @newevent="getcontent(123,$event)"></cpn>-->
+</div>
+
+<template id="tmp">
+    <div>
+        <button v-for="item in menu" @click="cbtnclick(item)">{{item.name}}</button>
+    </div>
+</template>
+<script src="../vue.js"></script>
+<script>
+    const cpn = {
+        template:'#tmp',
+        props:{
+            mymenu:{
+                type:Array,
+                default(){
+                    return []
+                },
+                required:false
+            }
+        },
+        data(){
+            return {
+                menu:[
+                    {id:'a',name:'红烧牛肉'},
+                    {id:'b',name:'回锅肉'},
+                    {id:'c',name:'宫爆鸡丁'},
+                    {id:'d',name:'毛血旺'},
+                ]
+            }
+        },
+        methods:{
+            cbtnclick(item){
+                // console.log(item.name)
+
+                // 这就是自定义事件
+                //  语法：this.$emit("创建自定义事件名称",item)
+
+                // 会默认把item这个参数传递给getcontent作为参数
+
+                this.$emit("newevent",item)
+            }
+        }
+    }
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            data: {
+
+            }
+        },
+        components:{
+            cpn
+        },
+        methods: {
+
+            // 一个参数的写法
+            getcontent(item){
+                console.log(item)
+            }
+
+
+
+            //两个参数的时候写法
+            // getcontent(key,item){
+            //     console.log(key,item)
+            // }
+        }
+
+    })
+</script>
+</body>
+</html>

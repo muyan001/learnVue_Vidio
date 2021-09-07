@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my-spn></my-spn>
+</div>
+<script src="../vue.js"></script>
+
+<!--  分离写法1  -->
+<script type="text/x-template" id="one">
+<div>
+    <p>标题</p>
+    <p>内容123</p>
+</div>
+</script>
+
+<!--分离写法2-->
+<template id="tm">
+    <div>
+        <p>标题2</p>
+        <p>内容123456</p>
+    </div>
+</template>
+<script>
+    // 注册一个全局组件
+    Vue.component('my-spn',{
+        template:'#tm'
+    })
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        }
+    })
+</script>
+</body>
+</html>

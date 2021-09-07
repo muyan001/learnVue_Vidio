@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+
+父组件中的数据传递给子组件：  使用props
+
+-->
+
+
+
+<div id="app">
+    <cpn :owncar="cars"></cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="tmp">
+    <div>
+        <p>电影名称：{{owncar}}</p>
+        <p>{{ownmessage}}</p>
+    </div>
+</template>
+<script>
+
+    const cpn = {
+        template:'#tmp',
+        // props 组件的属性数组，里面的值为组件里面对应的属性
+        // 数组类型 写法
+        // props:['owncar','ownmessage']
+        // 对象写法
+        props:{
+            owncar:{
+                type:Array, // 确定属性传递过来的类型
+
+                // 数组的默认值写法
+                default:function (){
+                    return []
+                },
+                required:false // 为true时，表示该属性必须有
+            },
+            ownmessage:{
+                type:String,
+                default:'hello world', // 默认值
+                required: true
+            }
+        }
+    }
+
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            cars:["吉利汽车",'五菱宏光','欧拉好猫','小鹏汽车']
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

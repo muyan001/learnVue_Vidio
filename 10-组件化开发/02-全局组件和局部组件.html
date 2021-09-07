@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    <newc></newc>-->
+    <newc2></newc2>
+</div>
+<script src="../vue.js"></script>
+<script>
+    // 1.创建组件构造器
+   const cpn = Vue.extend({
+        template:`
+        <div>
+            <p>标题</p>
+            <p>内容123456</p>
+        </div>
+         `
+    })
+
+
+    // 2.注册组件（全局）
+    // Vue.component('newc',cpn)
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        },
+        // 2. 注册局部组件
+        components:{
+            newc2:cpn
+        }
+    })
+</script>
+</body>
+</html>
