@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    1.单选框 -->
+    <select name="abc" v-model="fruit">
+        <option value="香蕉">香蕉</option>
+        <option value="西瓜">西瓜</option>
+        <option value="苹果">苹果</option>
+        <option value="梨子">梨子</option>
+    </select>
+    <p>选择的水果是：{{fruit}}</p>
+
+
+<!--    多选框   加上 multiple 就可以了 -->
+    <select name="abc" v-model="fruits" multiple>
+        <option value="香蕉">香蕉</option>
+        <option value="西瓜">西瓜</option>
+        <option value="苹果">苹果</option>
+        <option value="梨子">梨子</option>
+    </select>
+    <p>选择的水果是：{{fruits}}</p>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            fruit:'',
+            fruits:[]
+        }
+    })
+</script>
+</body>
+</html>

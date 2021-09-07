@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    1. CheckBox单选框
+        v-model 绑定的值类型为字符串时，那么识别为单选，且值被填充为true或者false
+-->
+    <label for="agree">
+        <input type="checkbox" id="agree"  v-model="isAgree" >同意协议
+    </label>
+<!--    <input type="checkbox"  value="agree"  v-model="isAgree" >同意协议-->
+<!--    <input type="checkbox"  value="noagree"  v-model="isAgree" >不同意同意协议-->
+    <p>是否同意协议:{{isAgree}}</p>
+    <button :disabled="!isAgree">下一步</button>
+    <br>
+
+<!--    2. CheckBox多选框
+        v-model 绑定的值类型为数组时，那么识别为多选，且值被填充为value属性的值
+-->
+    <input type="checkbox" value="吉利" v-model="cars">吉利
+    <input type="checkbox" value="五菱宏光" v-model="cars">五菱宏光
+    <input type="checkbox" value="欧拉好猫" v-model="cars">欧拉好猫
+    <input type="checkbox" value="小鹏汽车" v-model="cars">小鹏汽车
+    <p>选择的汽车是：{{cars}}</p>
+
+
+<!--    3. 值绑定(:for   :id   :value 都需要绑定 )-->
+    <label v-for="item in initCars" :for="item" >
+        <input type="checkbox" :id="item" :value="item" v-model="newCars">{{item}}
+    </label>
+    <p>选择的新的汽车是：{{newCars}}</p>
+
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            isAgree:false,
+            cars:[],
+            initCars:['特斯拉','理想汽车','小鹏汽车','比亚迪'],
+            newCars:[]
+
+        }
+    })
+</script>
+</body>
+</html>

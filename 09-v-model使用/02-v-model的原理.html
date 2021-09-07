@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+
+<!--    <input type="text" v-model="message">-->
+
+<!--    实现双向绑定-->
+<!--    <input type="text" :value="message" @input="valueChange">-->
+<!--        进一步简写-->
+    <input type="text" :value="message" @input="message = $event.target.value">
+    <p>{{message}}</p>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        },
+        methods:{
+            valueChange(event){
+                this.message = event.target.value; // 这个就是获取的最新的输入的值
+            }
+        }
+    })
+</script>
+</body>
+</html>
