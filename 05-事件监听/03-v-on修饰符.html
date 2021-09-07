@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    <h1>{{message}}</h1>-->
+
+<!--    1.点击会同时打印 按钮和div的事件日志，这种称之为冒泡事件，，为了阻止出现这种情况，，需要使用修饰符stop-->
+    <div @click="divclick">
+        <button @click.stop="btnclick">按钮</button>
+    </div>
+
+<!--    2.prevent 阻止默认事件的发生-->
+    <br>
+        <!--  这种情况下是默认提交到action对应的请求地址中，  -->
+<!--    <form action="baidu">-->
+<!--        <input type="submit" value="提交">-->
+<!--    </form>-->
+    <form action="baidu">
+        <input type="submit" value="提交" @click.prevent="submitclick">
+    </form>
+
+<!--    3.  .监听某个键盘按键的点击-->
+    <input type="text" @keyup.enter="keyup">
+
+<!--    4. once 事件触发一次-->
+    <button @click.once="btnonce">按钮123</button>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        },
+        methods:{
+            divclick(){
+                console.log("divclick")
+            },
+            btnclick(){
+                console.log("btnclick")
+            },
+            submitclick(){
+                console.log("submint")
+            },
+            keyup(){
+                console.log("keyup")
+            },
+            btnonce(){
+                console.log("btnonce")
+            }
+        }
+    })
+</script>
+</body>
+</html>

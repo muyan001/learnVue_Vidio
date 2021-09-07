@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .active {
+        color: red;
+    }
+</style>
+<body>
+<div id="app">
+
+    <!--  v-bind 后面跟一个对象语法  -->
+    <!--    <h2 :class="{key:value,类名:boolearn}"></h2>-->
+    <!-- 普通class和动态绑定class可以共存-->
+    <h2 class="title" :class="{active:isActive,line:isLine}">{{message}}</h2>
+
+    <!-- 将对象语法方法中 -->
+    <h2 class="title" :class="getClass()">{{message}}</h2>
+    <button @click="changeColor">点击更改颜色</button>
+    <h1>{{message}}</h1>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            isActive: true,
+            isLine: true
+        },
+        methods: {
+            changeColor: function () {
+                this.isActive = !this.isActive;
+            },
+            getClass:function () {
+                return {active:this.isActive,line:this.isLine}
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

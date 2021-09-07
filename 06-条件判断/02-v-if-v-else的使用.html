@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1 v-if="isshow">{{message}}</h1>
+    <h1 v-else>isshow is false :{{msg}}</h1>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            msg:"世界",
+            isshow:true
+        }
+    })
+</script>
+
+</body>
+</html>

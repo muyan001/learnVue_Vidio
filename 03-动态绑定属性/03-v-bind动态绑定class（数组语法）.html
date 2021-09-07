@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--        数组语法-->
+    <h1 class="title" :class="[active,line]">{{message}}</h1>
+    <!--        数组语法-方法调用-->
+    <h1 class="title" :class="getClass()">{{message}}</h1>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            active: "new1",
+            line: "new2"
+        },
+        methods:{
+            getClass:function (){
+                return [this.active,this.line]
+            }
+        }
+    })
+</script>
+</body>
+</html>

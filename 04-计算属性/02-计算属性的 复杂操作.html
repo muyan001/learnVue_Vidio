@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--计算所有书籍的总价格-->
+    <div id="app">
+            <h1>所有书籍的总价格是：{{totalPrice}}</h1>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            const app = new Vue({
+                el:"#app",
+                data:{
+                    books:[
+                        {id:110,name:"book1",price:120},
+                        {id:111,name:"book2",price:121},
+                        {id:112,name:"book3",price:122},
+                        {id:113,name:"book4",price:123},
+
+                    ]
+                },
+                computed:{
+                    totalPrice:function () {
+                        let price = 0
+                        for (let i = 0 ; i<this.books.length;i++){
+                            price =  price + this.books[i].price;
+                        }
+                        return price
+                    }
+                }
+            })
+        </script>
+
+</body>
+</html>

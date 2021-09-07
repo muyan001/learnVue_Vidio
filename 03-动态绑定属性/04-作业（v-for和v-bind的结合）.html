@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<!--
+    需求描述：获取每个电影名称，并且点击一个电影名称，该电影名称变红。
+-->
+<style>
+    .active{
+        color: red;
+    }
+</style>
+<body>
+<div id="app">
+    <ul>
+        <li :class="{active:isActive}"  v-for="(name,index) in movies" @click="changeColor(index)" :id="index"> {{index}}--{{name}}</li>
+    </ul>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            movies: ['电影1','电影2','电影3'],
+            isActive:false
+        },
+        methods : {
+            changeColor:function (index) {
+                const  s = document.getElementById(index);
+                s.style.color = 'red';
+                // this.isActive = true
+
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

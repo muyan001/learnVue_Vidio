@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+            <h1>{{allName}}</h1>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            const app = new Vue({
+                el:"#app",
+                data:{
+                    firstname:"jone",
+                    lastname:'jack'
+                },
+                computed:{
+                    // 这种写法其实是一种简写的方式
+                    // allName:function () {
+                    //     return this.firstname + ' ' + this.lastname
+                    // }
+
+
+                    // 真实的写法是，这个对象包含set和get方法
+
+                    allName:{
+                        // 真实的情况下，90%以上的场景中，都不会使用set方法，所
+                        // 以将set方法省略了，从而变成了上面的简写方法
+                        //  所以简写中，直接写 {{allName}} 而不是写{{allName()}}是因为 allName 本质上是一个对象， 直接写{{allName}}实际上是调用他的get方法。
+                        set:function (value) {
+
+                        },
+                        get:function (){
+                            return this.firstname + ' ' + this.lastname
+                        }
+
+                    }
+
+                }
+
+            })
+        </script>
+</body>
+</html>

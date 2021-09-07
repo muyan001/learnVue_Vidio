@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--        几种方式组合成带空格的全名称-->
+    <h1>{{firstname}} {{lastname}}</h1>
+    <h1>{{firstname + ' ' + lastname }}</h1>
+    <h1>{{getFullname()}}</h1>
+
+    <!--        计算属性(用于需要将几个属性结合起来，形成一个新的属性)的写法  -->
+    <h1>{{getAllName}}</h1>
+
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            firstname: "jone",
+            lastname: "jack"
+        },
+        // computed : 计算属性（）,,里面的都是属性
+        computed:{
+            getAllName:function (){
+                return this.firstname + " " + this.lastname;
+            }
+        }
+
+        ,
+        methods: {
+            getFullname: function () {
+                return this.firstname + " " + this.lastname;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

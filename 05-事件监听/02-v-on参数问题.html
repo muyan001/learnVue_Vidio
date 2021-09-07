@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    正常写法(方法不需要参数的时候可以省略小括号)-->
+    <button @click="btn1click">按钮1</button>
+<!--   在时间定义时，写方法时省略了小括号，但是方法本身是需要参数，这个时候-,
+       vue 会默认将浏览器生产的event时间对象作为参数传入到方法
+-->
+
+    <button @click="btn2click">按钮2</button>
+
+<!--    方法定义时，我们需要event对象，同时又需要其他参数 -->
+<!--    在调用方法，如何手动的获取到浏览器参数的event对象： 采用$event-->
+    <button @click="btn3click('123',$event)">按钮3</button>
+
+    <button @click="">按钮4</button>
+    <button @click="">按钮5</button>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        },
+        methods:{
+            btn1click(){
+                console.log("按钮1");
+            },
+            btn2click(abc){
+                console.log("按钮2",abc);
+            },
+            btn3click(abc,eve){
+                console.log('++++++',abc,eve);
+            }
+        }
+
+    })
+</script>
+
+</body>
+</html>

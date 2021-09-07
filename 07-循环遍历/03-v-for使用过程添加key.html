@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    官方建议绑定一个key，，推荐绑定数组的value（值唯一）,,,性能会提高-->
+    <ul>
+        <li v-for="item in info" :key="item">{{item}}</li>
+    </ul>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            names:['jone','jack','nuse']
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+            <h1>{{getAllName()}}</h1>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            const app = new Vue({
+                el:"#app",
+                data:{
+                    firstname:"jone",
+                    lastname:"jack"
+                },
+                // 每次调用都会执行里面的函数
+                methods:{
+                    getAllName:function (){
+                        return this.firstname + ' ' + this.lastname
+                    }
+                },
+                // 与methods 的方式比起来，这个会将计算结果产生缓存，每次调用直接是缓存，
+                // 只有里面的计算变量发生变化时才会重新调用一次
+                computed:{
+                    allName: function (){
+                        return this.firstname + ' ' + this.lastname
+                    }
+                }
+
+            })
+        </script>
+
+</body>
+</html>
