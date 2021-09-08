@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn :mymes="message"
+         :myage="age" @changeage="changeInitAge" @changemsg="changeInitMsg"></cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="tmp">
+    <div>
+
+<!--        进行双向绑定的时候，不能用props的值来绑定，，必须是data 或者 computed 的值-->
+        <h2>子组件中props的数据：{{mymes}}</h2>
+        <h2>组件中data的数据：{{newMes}}</h2>
+<!--        <input type="text" v-model="newMes" >-->
+        <input type="text" :value="newMes" @input="getMsg">
+
+        <h2>子组件中props的数据：{{myage}}</h2>
+        <h2>子组件中data的数据：{{newAge}}</h2>
+<!--        <input type="text" v-model="newAge"  >-->
+        <input type="text" :value="newAge" @input="getAge">
+
+    </div>
+</template>
+
+<script>
+    const  cpn = {
+        template:'#tmp',
+        props:{
+            mymes:String,
+            myage:Number
+        },
+        data(){
+            return {
+                newMes:this.mymes,
+                newAge:this.myage
+            }
+        },
+        methods:{
+            getAge(){
+
+                this.newAge = event.target.value; //  获取input的输入值
+                this.$emit('changeage',this.newAge);
+
+            },
+            getMsg(){
+                this.newMes = event.target.value;//  获取input的输入值
+                this.$emit('changemsg',this.newMes);
+
+            }
+
+        }
+
+    }
+
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            age:18
+        },
+        components:{
+            cpn
+        },
+        methods: {
+            changeInitAge(age){
+                this.age = parseInt(age)
+            },
+            changeInitMsg(msg){
+                this.message = msg
+            }
+        }
+    })
+</script>
+</body>
+</html>

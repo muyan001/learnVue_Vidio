@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn :pmsg="message"  :page="age"  @newmsg="getNewMsg" @newage="getNewAge"></cpn>
+</div>
+<script src="../vue.js"></script>
+
+<template id="temp">
+    <div>
+        <h2>子组件中的props:{{pmsg}}</h2>
+        <h2>子组件中的data:{{dmsg}}</h2>
+        <input type="text" v-model="dmsg">
+
+        <h2>子组件中的props:{{page}}</h2>
+        <h2>子组件中的data:{{dage}}</h2>
+        <input type="text" v-model="dage">
+    </div>
+
+</template>
+
+<script>
+    const  cpn = {
+        template:"#temp",
+        props:{
+            pmsg:String,
+            page:Number
+        },
+        data(){
+            return {
+                dmsg:this.pmsg,
+                dage: this.page
+            }
+        },
+        watch:{
+            dmsg(newValue){
+                this.$emit('newmsg',newValue);
+            },
+            dage(newValue){
+                this.$emit('newage',newValue);
+            }
+        }
+    }
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            age:18
+        },
+        components:{
+
+            cpn
+        },
+        methods:{
+            getNewMsg(value){
+                this.message = value;
+            },
+            getNewAge(value){
+                this.age = parseInt(value)
+            }
+        }
+    })
+</script>
+</body>
+</html>

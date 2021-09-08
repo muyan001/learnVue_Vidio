@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn1></cpn1>
+</div>
+<script src="../vue.js"></script>
+
+
+<template id="temp1">
+    <div>
+        <h1>{{name}}</h1>
+        <cpn2></cpn2>
+    </div>
+
+</template>
+
+<template id="temp2">
+    <div>
+        <h1>{{name}}</h1>
+        <button @click="getParentInfo">获取父组件</button>
+        <button @click="getRootInfor">获取根组件</button>
+    </div>
+
+</template>
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！我是根组件"
+        },
+        components:{
+            cpn1:{
+                template:"#temp1",
+                data(){
+                    return {
+                        name:"第一个子组件"
+                    }
+                },
+                components: {
+                    cpn2: {
+                        template: "#temp2",
+                        data() {
+                            return {
+                                name: "第二个子组件"
+                            }
+                        },
+                        methods:{
+                            getParentInfo(){
+
+                                //  this.$parent 访问父组件对象
+                                console.log(this.$parent.name)
+                            },
+                            getRootInfor(){
+                                // this.$root 访问根组件对象
+                                console.log(this.$root.message);
+                            }
+
+                        }
+                    }
+
+                }
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

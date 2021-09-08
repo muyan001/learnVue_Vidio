@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn ref="abc"></cpn>
+
+    <button @click="getChildInfo">点击</button>
+    <button @click="refsGetChildInfo">refs点击</button>
+</div>
+<script src="../vue.js"></script>
+<template id="tmp">
+    <div>
+        <h1>{{name}}</h1>
+    </div>
+</template>
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        },
+        methods:{
+            getChildInfo(){
+                //  1. 获取子组件对象的方法 ： $children ,,值为一个数组   ---------  真实场景下，90%的可能不会用这个方法
+                console.log(this.$children);
+                console.log(this.$children[0].name)
+            },
+            refsGetChildInfo(){
+                // 2. 获取子组件对象的方法 ： 通过$refs ,, 必须在子组件上设置一个属性 ref="abc" ,,相当于设置一个key，不然$refs获取的对象为空
+                console.log(this.$refs);
+                // 调取某个子组件的属性或者方法
+                console.log(this.$refs.abc.name)
+            }
+        },
+        components:{
+            cpn:{
+                template:"#tmp",
+                data(){
+                    return{
+                        name:'你好，打工人！'
+                    }
+                },
+                methods:{
+                    doSomething(){
+                        console.log("干饭人");
+                    }
+                }
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

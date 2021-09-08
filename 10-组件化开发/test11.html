@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn :pmsg="message" :page="age"></cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="tmp">
+    <div>
+        <h1>子组件中的props:{{pmsg}}</h1>
+        <h1>子组件中的data:{{dmsg}}</h1>
+        <input type="text" v-model="dmsg" >
+    </div>
+</template>
+<script>
+    const cpn = {
+        template:'#tmp',
+        props:{
+            pmsg:String,
+            page:Number
+        },
+        // data: {
+        //     dmsg:this.pmsg,
+        //     dage:this.page
+        // }
+        data(){
+            return{
+                    dmsg:this.pmsg,
+                    dage:this.page
+            }
+        }
+    }
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            age:18
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

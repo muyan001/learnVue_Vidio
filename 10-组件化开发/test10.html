@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn :newmenu="menu" @menuname="getInfo"></cpn>
+</div>
+<script src="../vue.js"></script>
+
+<template id="tmp">
+    <div>
+        <button v-for="item in newmenu" @click="sendInfo(item)">{{item.name}}</button>
+    </div>
+</template>
+
+<script>
+   const cpn = {
+       template:"#tmp",
+
+       // props:用于接收父组件传递过来的信息
+       props:{
+           newmenu:{
+               type:Array,
+               default(){
+                   return []
+               },
+               required:false
+           }
+       },
+       methods:{
+           sendInfo(item){
+               //  this.$emit('menuname',item) 用于向父组件发送信息
+               this.$emit('menuname',item)
+           }
+       }
+   }
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            menu:[
+                {id:'a',name:'红烧牛肉'},
+                {id:'b',name:'回锅肉'},
+                {id:'c',name:'宫爆鸡丁'},
+                {id:'d',name:'毛血旺'},
+            ]
+        },
+        components:{
+            cpn
+        },
+        methods: {
+            getInfo(item){
+                console.log(item)
+            }
+        }
+    })
+</script>
+</body>
+</html>
