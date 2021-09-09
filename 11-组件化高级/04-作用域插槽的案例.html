@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+需求：引用的组件的样式我想改变，自己遍历数据
+
+-->
+<div id="app">
+
+    <cpn></cpn>
+
+<!--    核心点，获取组件中的数据-->
+<!--    vue2.5.x 以下时 必须用template标签，以上时可以普通标签-->
+
+
+    <cpn >
+<!--        步骤2：添加标签并添加属性  slot-scope="slot"-->
+        <template slot-scope="slot">
+<!--            步骤3：遍历数据-->
+            <span v-for="item in slot.abc">{{item}} * </span>
+        </template>
+    </cpn>
+
+
+    <cpn>
+        <template slot-scope="slot">
+            <span v-for="item in slot.abc">{{item}} +</span>
+        </template>
+    </cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="temp">
+    <div>
+<!--        步骤1： :data="language"  给子组件的数据取一个新的名字，，，也可以  :abc="language"  -->
+        <slot :abc="language" >
+            <ul>
+                <li v-for="item in language">{{item}}</li>
+            </ul>
+
+        </slot>
+
+    </div>
+</template>
+
+<script>
+
+    const cpn ={
+        template:"#temp",
+        data(){
+            return {
+                language : ["java","C++","C#","python"]
+            }
+        }
+    }
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

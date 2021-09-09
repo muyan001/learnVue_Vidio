@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  <spn><xx></xx></spn>   <xx></xx> 这部分内容会被渲染到组件的插槽中 -->
+    <cpn>
+        <span>插槽新添加的内容</span>
+    </cpn>
+    <cpn>
+        <div>
+            <h4>123456</h4>
+        </div>
+        <button>新按钮</button>
+    </cpn>
+    <cpn></cpn>
+
+</div>
+<script src="../vue.js"></script>
+
+<template id="temp">
+    <div>
+        <h1>组件化标题</h1>
+<!--       <button>插槽默认按钮</button> 如果使用组件时，插槽无任何内容，则显示该按钮 -->
+<!--     <slot></slot>就是插槽  -->
+        <slot><button>插槽默认按钮</button></slot>
+    </div>
+</template>
+<script>
+
+    const cpn={
+        template:"#temp"
+    }
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        },
+        components:{
+
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

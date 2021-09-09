@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    这里这个isShow是实例里面的isShow，，，因为它的模板是实例的模板-->
+    <cpn v-show="isShow"></cpn>
+</div>
+<script src="../vue.js"></script>
+
+
+<template id="temp">
+    <div>
+        <h1>组件标题</h1>
+<!--        这里的isShow是组件的isShow，，，因为它的模板是实例的模板-->
+        <button v-show="isShow">组件按钮</button>
+    </div>
+</template>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！",
+            isShow: true
+        },
+        components:{
+            cpn:{
+                template:"#temp"
+            },
+            data(){
+                return {
+                    isShow:false
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

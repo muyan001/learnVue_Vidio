@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn >
+<!--        注意：插槽的名称需要放到即将放入插槽的内容里面-->
+        <button slot="center">中间的插槽按钮</button>
+    </cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="temp">
+    <div>
+<!--        给插槽起名字 -->
+        <slot name="left">左边</slot>
+        <slot name="center">中间</slot>
+        <slot name="right">右边</slot>
+    </div>
+</template>
+<script>
+
+    const cpn = {
+        template:"#temp"
+    }
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀！"
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>
