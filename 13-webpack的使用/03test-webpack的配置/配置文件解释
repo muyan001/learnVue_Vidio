@@ -1,0 +1,23 @@
+webpack.config.js  专门用来做webpack的配置的
+
+
+package.json
+    npm init 命令执行后，产生的文件，是关于npm初始化的配置,是管理node包的相关配置
+
+    // 代表用户可以自定义的命令
+        "scripts": {
+            "test": "echo \"Error: no test specified\" && exit 1",
+
+            // 执行 npm run build  等同于  webpack      注意：webpack命令在 webpack.config.js 中被设置过一次
+            // 直接在命令窗口使用    webpack命令 就等同于  webpack ./src/main.js ./dist/bundle.js命令
+
+            // 另外：这个地方使用的webpack 优先使用本地的webpack，再使用全局的webpack
+            "build": "webpack"
+          }
+
+命令窗口使用的webpack命令的时候都是使用的全局的webpack，，，
+
+
+
+npm install webpack@3.6.0 --save-de
+    在本地安装webpack的命令

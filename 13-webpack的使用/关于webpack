@@ -25,3 +25,13 @@ dist（distribution 发布）：是webpack打包后的文件夹
 webpack ./src/main.js ./dist/new.js
 
 
+
+关于loader的命令参考官网命令https://webpack.docschina.org/loaders/#styling
+
+style-loader
+    npm install --save-dev style-loader
+
+css-loader
+    npm install --save-dev css-loader
+
+
