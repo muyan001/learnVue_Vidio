@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>14-runtimecompiler</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+<!--
+
+runtime-compiler
+代码运行顺序
+                抽象语法树       渲染        虚拟DOM
+    template ==>  ast    ==>   render  ==> DOM  ==>  UI
+
+
+runtime-only
+    代码运行顺序
+       渲染        虚拟DOM
+        render  ==> DOM  ==>  UI
+
+
+所以：runtime-only 优点
+  1.性能更高
+  2.需要的源码更少
+
+-->

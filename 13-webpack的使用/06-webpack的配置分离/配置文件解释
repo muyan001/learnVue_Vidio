@@ -1,0 +1,96 @@
+webpack.config.js  专门用来做webpack的配置的
+
+
+package.json
+    npm init 命令执行后，产生的文件，是关于npm初始化的配置,是管理node包的相关配置
+
+    // 代表用户可以自定义的命令
+        "scripts": {
+            "test": "echo \"Error: no test specified\" && exit 1",
+
+            // 执行 npm run build  等同于  webpack      注意：webpack命令在 webpack.config.js 中被设置过一次
+            // 直接在命令窗口使用    webpack命令 就等同于  webpack ./src/main.js ./dist/bundle.js命令
+
+            // 另外：这个地方使用的webpack 优先使用本地的webpack，再使用全局的webpack
+            "build": "webpack"
+          }
+
+命令窗口使用的webpack命令的时候都是使用的全局的webpack，，，
+
+
+
+npm install webpack@3.6.0 --save-de
+    在本地安装webpack的命令
+
+需要安装 的loader：
+    样式：
+    npm install less-loader --save-dev
+    npm install less --save-dev   这个不用配置
+    npm install --save-dev css-loader
+    npm install style-loader --save-dev
+
+    图片：
+    npm install url-loader --save-dev
+    npm install file-loader --save-dev
+
+    es6转化为es5
+    npm install -D babel-loader @babel/core @babel/preset-env webpack （官网）
+    npm install  babel-loader@7 babel-core babel-preset-es2015 --save-dev   实际操作的
+
+    需要在webpack.config.js 中进行相关配置
+
+
+--------
+vue安装的三种方式：
+1.直接下载引用
+2.CDN引用
+3.npm安装
+
+runtime-->only模式：代码中不能有任何的template
+runtime-->compiler模式：代码中，可以有template，因为compiler可以编译template
+
+
+
+
+
+vue 操作
+    1.下载vue npm install vue --save    这个不用配置
+    2.引用vue
+    3.配置webpack.config.js 解决runtime-only问题
+
+
+-------------------
+vue文件
+    npm install vue-loader vue-template-compiler --sav-dev
+
+    vue-loader：加载vue文件
+    vue-template-compiler：解析template文件
+
+    编译报错
+        vue-loader was used without the corresponding plugin.
+        解决方法：必须要vue-loader 14以下的版本才会自动安装这个插件
+
+
+
+
+---------------------------------
+插件安装：
+    webpack：（该插件是webpack自带）直接引用，
+            引入横幅插件：解释“版权归xx所有”
+
+    html-webpack-plugin：用于index.html进行打包
+        npm install html-webpack-plugin --save-dev
+
+    html-webpack-plugin：将js代码进行压缩
+        npm install html-webpack-plugin --svae-dev
+
+
+--------------------------
+本地调试工具
+    npm install webpack-dev-server --save-dev
+
+
+
+--------------------------------
+配置文件分离
+    npm install webpack-merge --save-dev   # 配置文件合并
