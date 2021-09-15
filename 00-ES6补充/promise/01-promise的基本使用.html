@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    /**
+     * 什么情况下使用promise？
+     *      一般情况下是有异步操作的时候，使用promise对这个异步操作进行封装
+     *  new -> 构造函数（1.保存了一些状态信息。   2 .执行传入的函数）
+     *
+     *  在执行传入的回调函数时，会传入两个参数，resolve和reject，这两个参数本身也是函数
+     */
+
+    // 链式编程
+
+    // 用法
+    new Promise((resolve,reject)=>{
+        // 执行的网络请求
+        setTimeout(()=>{
+            // 成功的时候，网络回来的数据进行逻辑处理：调用resolve函数（并传递参数）
+            // resolve('hello world')
+
+            // 失败的时候,网络回来的数据进行逻辑处理：调用reject函数（并传递参数）
+            reject('失败的参数')
+
+        },2000)
+
+    }).then((data)=>{
+        // resolve() 函数 会调用这里的then（）方法：then方法里面是成功后存放真正的逻辑处理的代码
+        console.log(data)
+        console.log(data)
+        console.log(data)
+        console.log(data)
+    }).catch((err)=>{
+        // reject() 函数 会调用这里的catch（）方法：catch方法里面是失败后存放真正的逻辑处理的代码
+        console.log(err)
+        console.log(err)
+        console.log(err)
+    })
+</script>
+</body>
+</html>

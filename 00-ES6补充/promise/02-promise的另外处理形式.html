@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script>
+    new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+
+            reject("请求失败了")
+            resolve("你好呀")
+        },2000)
+    }).then(
+
+        // 第一个参数是函数，处理请求成功后，执行
+        data =>{
+        console.log(data)
+    },
+        // 第一个参数也是函数，处理请求失败后，执行
+        err=>{
+        console.log(err)
+    }
+    )
+  </script>
+
+</body>
+</html>

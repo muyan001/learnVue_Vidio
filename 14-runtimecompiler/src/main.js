@@ -25,7 +25,7 @@ new Vue({
     // 1.createElement普通用法：createElement('原始名称',{属性名称：属性值},['填充的内容'])
     // return createElement('h1',{'class':'123'},['测试createElement函数'])
 
-
+y
   //  2.createElement 高级用法：createElement（组件名）
     return createElement(mytest)
 

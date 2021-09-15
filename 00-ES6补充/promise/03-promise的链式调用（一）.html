@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve("第一次网络请求")
+        },1000)
+    }).then((data)=>{
+        console.log(data,"第一次逻辑处理")
+
+
+
+        return new Promise(((resolve, reject) => {
+            setTimeout(()=>{
+                resolve("第二次网络请求")
+            },2000)
+        })).then(data=>{
+            console.log(data,"第二次逻辑处理")
+
+
+
+
+
+            return new Promise(((resolve, reject) => {
+                setTimeout(()=>{
+                    resolve("第三次网络请求")
+                },3000)
+            })).then(data=>{
+                console.log(data,"第三次逻辑处理")
+            })
+        })
+    })
+</script>
+</body>
+</html>

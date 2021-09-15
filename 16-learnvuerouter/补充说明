@@ -1,0 +1,106 @@
+1.阶段1：前后端不分离
+  后端去写前端的东西
+
+2.阶段2：前后端分离：后端只负责提供数据，不负责任何阶段内容。
+  前端渲染：浏览器中显示的网页中的大部分内容,都是由前端写的js代码在浏览器中执行，最终渲染出来的网页
+
+3.阶段3：SPA页面：单页面富应用：前端维护路由
+  一个url 对应 一个组件
+
+
+
+
+
+
+HTML5的两种模式
+
+1.第一种
+location.hash = '123'
+
+2.第二种
+history.pushState({},'','xxx')
+history.replaceState({},'','xxx')   ：这个方法使用后，浏览器上的返回按钮就无法使用
+history.go(-1)
+history.back 相当于 history.go(-1)
+history.forward 相当于 history.go(1)
+
+
+
+
+使用路由 vue-router
+  1.导入路由对象，并且调用vue.use
+  2.创建路由实例,并且传入路由映射配置
+  3.在vue实例中挂载创建的路由实例
+
+
+
+路由方式
+  1.router中配置
+  2.代码中跳转
+
+动态路由
+
+
+
+
+
+打包文件解释
+  dist
+    static
+      js
+        appxx.js   业务代码
+        mainifestxx.js   底层支撑（比如：ES6转化为ES5、模块依赖）
+        vendorxx.js   第三方供应商代码（Vue、vue-router、axios等）
+
+路由懒加载：用到时再加载，将不同的路由对应的组件打包到不同的js文件里面
+  懒加载的三种写法：
+    1.结合Vue的异步组件和webpack的代码分析
+    2.AMD写法
+    3.在ES6中，我们可以有更加简单的写法来组织Vue异步组件和webpack的代码分割（建议写法）
+    const home = ()=>import('../components/Home.vue')
+
+
+
+
+路由的嵌套
+    path:'/home',
+          component:home,
+          children:[
+            {
+              path:'',
+              redirect:'news'
+            },
+            {
+              path:'news',
+              component:homeNews
+            },
+            {
+              path:'message',
+              component:homeMessages
+            }
+
+          ]
+
+
+传递参数的方式：主要有两种类型：params 和 query
+  parms类型：
+    1.配置路由格式：/router/:id
+    2.传递方式：在path后面跟上对应的值
+    3.传递后形成的路径：/router/123,/router/abc
+
+  query的类型：
+    1.配置路由格式：/router，也就是普通配置
+    2.传递的方式: 对象中使用query的key作为传递方式
+    3.传递后形成的路劲：/router?id=123,/router?id=abc
+
+$router和$route
+   $router :全局的router
+   $route: 当前活跃router
+
+
+
+导航守卫（前置守卫guard：回调函数）：改变网页的title
+  1.路由中添加meta
+  2.重写方法router.beforeEach
+
+

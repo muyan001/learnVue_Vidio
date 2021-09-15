@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     *   需求： 同时请求两个url 拿到各自结果后进行合并
+     */
+
+
+    //  之前的笨方法的写法
+
+    // url1Tag = false
+    // url2Tag = false
+    //
+    // function handResult(){
+    //     if (url1Tag && url2Tag){
+    //
+    //     }
+    // }
+    //
+    // $.ajax( {
+    //     url:'url1',
+    //     successe:function (){
+    //         url1Tag = true
+    //         handResult()
+    //
+    //     }
+    // })
+    // $.ajax( {
+    //     url:'url2',
+    //     successe:function (){
+    //         url2Tag = true
+    //         handResult()
+    //     }
+    // })
+
+// ***************************************************************************************************************
+//    利用promise.all() 编写
+    Promise.all([new Promise((resolve, reject) =>{
+
+        // $.ajax( {
+        //     url:'url1',
+        //     successe:function (){
+        //
+        //     }
+        // })
+
+        setTimeout(()=>{
+            resolve("result1")
+        },2000)
+
+    }),new Promise((resolve, reject)=>{
+
+        // $.ajax( {
+        //     url:'url2',
+        //     successe:function (){
+        //         url2Tag = true
+        //         handResult()
+        //     }
+        // })
+        setTimeout(()=>{
+            resolve("result2")
+        },1000)
+
+    })]).then(result=>{
+        console.log(result)
+    })
+
+
+
+</script>
+
+</body>
+</html>
