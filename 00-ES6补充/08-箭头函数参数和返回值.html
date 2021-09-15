@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 参数问题
+    //1.放入两个参数
+    import {num2} from "../12-模块化/02-ES6的模块化实现/a";
+
+    const sum = (num1, num2) =>{
+        return num1 + num2
+    }
+
+    // 2.放入一个参数：可以参数的括号
+    const power = num =>{
+        return num+2
+    }
+
+    //返回值的问题
+    //1.多行代码
+    const test = ()=>{
+        console.log("123")
+        console.log('234')
+    }
+//    2.一行代码：有特殊写法
+    const sk = (num1,num2)=> num1 + num2
+    //上面的写法相当于这样
+    const ls = (a,b)=>{
+        return a + b
+    }
+
+
+</script>
+</body>
+</html>
