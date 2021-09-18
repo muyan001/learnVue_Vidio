@@ -5,3 +5,4 @@ vuex：
 vuex状态管理图例中：
   actions 是为了处理异步操作
   devtools ： 浏览器插件，用来监听是哪个组件更改了值，只能监听同步操作，
+  mutations： 可以传递额外参数，
