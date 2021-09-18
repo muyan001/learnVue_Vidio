@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const people = {
+        name:'aa',
+        age:18,
+        addr:'红旗河沟'
+    }
+
+    // 之前的写法
+    // const name = people.name
+    // const age = people.age
+    // const addr = people.addr
+
+
+    // 解构写法
+
+    const {age,name,addr} = people
+    console.log(age)
+    console.log(name)
+    console.log(addr)
+
+</script>
+
+</body>
+</html>

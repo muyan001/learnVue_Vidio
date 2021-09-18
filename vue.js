@@ -6053,7 +6053,7 @@
       var i;
       // hack for #4339: a reactivated component with inner transition
       // does not trigger because the inner node's created hooks are not called
-      // again. It's not ideal to involve module-specific logic in here but
+      // again. It's not ideal to involve modules-specific logic in here but
       // there doesn't seem to be a better way to do it.
       var innerNode = vnode;
       while (innerNode.componentInstance) {
@@ -8486,7 +8486,7 @@
 
   /*  */
 
-  // the directive module should be applied last, after all
+  // the directive modules should be applied last, after all
   // built-in modules have been applied.
   var modules = platformModules.concat(baseModules);
 
@@ -8848,7 +8848,7 @@
       var oldChild = getRealChild(oldRawChild);
 
       // mark v-show
-      // so that the transition module can hand over the control to the directive
+      // so that the transition modules can hand over the control to the directive
       if (child.data.directives && child.data.directives.some(isVShowDirective)) {
         child.data.show = true;
       }
@@ -11025,7 +11025,7 @@
         var children = el.inlineTemplate ? null : genChildren(el, state, true);
         code = "_c('" + (el.tag) + "'" + (data ? ("," + data) : '') + (children ? ("," + children) : '') + ")";
       }
-      // module transforms
+      // modules transforms
       for (var i = 0; i < state.transforms.length; i++) {
         code = state.transforms[i](el, code);
       }
@@ -11172,7 +11172,7 @@
     if (el.component) {
       data += "tag:\"" + (el.tag) + "\",";
     }
-    // module data generation functions
+    // modules data generation functions
     for (var i = 0; i < state.dataGenFns.length; i++) {
       data += state.dataGenFns[i](el);
     }
