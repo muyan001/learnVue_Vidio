@@ -1,4 +1,4 @@
-import vue from "../../../../vue";
+import vue from "../../../../01-Vue初体验/vue";
 import {DELPRO} from "./mutation.type";
 
 export default {

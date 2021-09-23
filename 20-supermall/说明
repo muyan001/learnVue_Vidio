@@ -1,0 +1,13 @@
+目录结构说明：
+    asserts:存放静态资源
+        css:css文件
+        img:图片
+    common：公共的js文件
+    components:组件
+        common：公共组件（和业务无关的）
+
+    network:网络相关
+    router：路由相关
+    store：vuex相关
+    view：项目大分类（首页、分类、购物车、我的）
+        home：首页大模块

@@ -1,0 +1,18 @@
+axios:
+    支持promise
+
+    axios() 返回的就是promise对象
+
+    get请求：http://123.207.32.32:8000/home/multidata
+    post请求：http://123.207.32.32:8000/home/data?type=sell&page=2
+
+
+    常见的配置选项：
+        url:''
+        method:''
+        baseURL:''
+        transformRequest:'' // 请求前的数据处理
+        transformResponse:''  // 请求后的数据处理
+        header:'' // 自定义的请求头
+        parms:'' // 参数:请求设置为get的时候，自动拼接到url上面
+        data:''  // 请求数据：post请求的时候的数据
