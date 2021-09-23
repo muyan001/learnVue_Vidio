@@ -1,0 +1,57 @@
+@import "./normalize.css";
+
+/*:root -> 获取根元素html*/
+/*--color-text:#666;  这种是定义变量*/
+
+
+:root {
+    --color-text:#666;
+    --color-tint:#ff8198;
+    --color-background:#fff;
+    --color-height-txt: #ff5777;
+    --font-size:14px;
+    --line-height:1.5;
+
+}
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Helvetica Neue",Helvetica,"PMingLiU-ExtB","微软雅黑 Light",Arial,sans-serif,"Microsoft YaHei UI";
+    user-select: none; /* 禁止用户鼠标在页面上，选中文字、图片等*/
+    -webkit-column-rule-color: transparent;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    width: 100vw;
+}
+a{
+    color:var(--color-text);
+    text-decoration: none;
+}
+
+.clear-fix::after{
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+
+}
+
+.clear-fix{
+    zoom: 1;
+}
+
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+
