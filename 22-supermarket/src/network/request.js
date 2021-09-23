@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function (){
+export default function request(config){
   //1.创建axios实例
   const instance = axios.create({
     baseURL:'http://123.207.32.32:8000',
@@ -16,13 +16,13 @@ export default function (){
   })
 
   instance.interceptors.response.use(response=>{
-   return response
+   return response.data
   },error => {
-    console.log()
+    console.log(error)
   })
 
   // 3.发送真正的网络请求
-  return instance(console)
+  return instance(config)
 
 
 }
