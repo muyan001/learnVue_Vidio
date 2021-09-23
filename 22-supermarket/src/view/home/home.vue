@@ -23,6 +23,12 @@
       <li>列表</li>
       <li>列表</li>
       <li>列表</li>
+      <li>列表</li>
+      <li>列表</li>
+      <li>列表</li>
+      <li>列表</li>
+      <li>列表</li>
+      <li>列表</li>
     </ul>
 
   </div>
@@ -36,7 +42,7 @@ import HomeFeatureView from "@/view/home/childrenCompontens/HomeFeatureView";
 
 import TabControl from "@/components/content/tabcontrol/TabControl";
 
-import {getHomeMultidata} from "@/network/home";
+import {getHomeMultidata,getHomeGoods} from "@/network/home";
 
 
 
@@ -53,7 +59,12 @@ export default {
   data(){
     return {
       banner:[],
-      recommend:[]
+      recommend:[],
+      goods:{
+        "pop":{page:0,list:[]},
+        "news":{page:0,list:[]},
+        "sell":{page:0,list:[]}
+      }
 
       // banner:Object
       // recommend:Object
@@ -61,14 +72,31 @@ export default {
   },
   created() {
     // 请求多个数据
-    getHomeMultidata().then(res=>{
+    this.getHomeMultidata()
 
-      this.banner = res.data.banner.list
-      console.log(res.data.banner.list)
-      this.recommend = res.data.recommend.list
-      console.log(res.data.recommend.list)
+    // 2. 请求多个商品
+    this.getHomeGoods()
+  },
+  methods:{
+    getHomeMultidata(){
+      getHomeMultidata().then(res=>{
 
-    })
+        this.banner = res.data.banner.list
+        // console.log(res.data.banner.list)
+        this.recommend = res.data.recommend.list
+        // console.log(res.data.recommend.list)
+
+      })
+    },
+
+    getHomeGoods(type){
+      const page = this.goods[type].page + 1
+      getHomeGoods(type,page).then(res=>{
+        // console.log(res)
+        this.goods[type].list.push(...res[type])
+        this.goods[type].page = page
+      })
+    }
   }
 }
 </script>

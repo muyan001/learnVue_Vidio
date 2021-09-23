@@ -127,7 +127,7 @@ instance1({
 
 instance1({
   url:'/home/data',
-  tpype:'get',
+  type:'get',
   params:{
     type:'pop',
     page: 3
